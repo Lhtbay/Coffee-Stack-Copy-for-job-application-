@@ -7,6 +7,8 @@ public class GameManager_sc : MonoBehaviour
     public bool gameStart = false;
 
     [SerializeField] private GameObject _cupObject;
+    [SerializeField] private GameObject _startCanvasObject;
+
 
     private void FixedUpdate()
     {
@@ -15,6 +17,7 @@ public class GameManager_sc : MonoBehaviour
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             {
                 gameStart = true;
+                _startCanvasObject.SetActive(false);
                 _cupObject.GetComponent<Animator>().SetTrigger("isStart");
             }
         }
