@@ -8,8 +8,7 @@ public class GameManager_sc : MonoBehaviour
 
     [SerializeField] private GameObject _cupObject;
     [SerializeField] private GameObject _startCanvasObject;
-
-
+    
     private void FixedUpdate()
     {
         if (gameStart==false)
@@ -22,4 +21,7 @@ public class GameManager_sc : MonoBehaviour
             }
         }
     }
+
+ 
+
 }
