@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class CupEvent_sc : MonoBehaviour
 {
-    [SerializeField] private GameManager_sc _gameManagerScript;
-
     public List<GameObject> _copyCupsList;
+
+    [SerializeField] private GameManager_sc _gameManagerScript;
 
     private BoxCollider _playerCollider;
 
     private int _indexNumber;
-    private GameObject _indexGameObject;
+    private int _indexValueOther;
 
     private void Start()
     {
@@ -28,7 +28,7 @@ public class CupEvent_sc : MonoBehaviour
         {           
             _copyCupsList.Add(other.gameObject);
            
-            other.gameObject.GetComponent<CupCopy_sc>()._beforeObject = _copyCupsList[_copyCupsList.IndexOf(other.gameObject)-1];
+            //other.gameObject.GetComponent<CupCopy_sc>()._beforeObject = _copyCupsList[_copyCupsList.IndexOf(other.gameObject)-1];
             _indexNumber = (_copyCupsList.IndexOf(other.gameObject)-1);
 
             other.gameObject.transform.position = new Vector3(
@@ -58,7 +58,11 @@ public class CupEvent_sc : MonoBehaviour
                 _playerCollider.size.x,
                 _playerCollider.size.y,
                 _playerCollider.size.z+2);          
-        }
+        }    
     }
-   
+    public int IndexOfValue (GameObject ObjectValue)
+    {
+        _indexValueOther = _copyCupsList.IndexOf(ObjectValue);
+        return _indexValueOther;
+    }
 }

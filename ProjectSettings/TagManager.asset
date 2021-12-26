@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - cup
+  - lid
+  - cartoon
+  - event
+  - sell
   layers:
   - Default
   - TransparentFX
