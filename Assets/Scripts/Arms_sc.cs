@@ -4,16 +4,44 @@ using UnityEngine;
 
 public class Arms_sc : MonoBehaviour
 {
-    [SerializeField] private Transform _cupToHandTrasform; 
+    [SerializeField] private Transform _cupToHandTrasform;
+    [SerializeField] private GameObject _armObject;
+    [SerializeField] bool _rightSide = true;
 
-    private void OnCollisionEnter(Collision collision)
+    private BoxCollider _thisCollider;
+    private Animator _thisAnim;
+
+    private GameObject _colliderObject;
+
+    private bool _oneTime = true;
+
+    private void Start()
     {
-        if (collision.gameObject.tag == "event")
+        _thisCollider = this.gameObject.GetComponent<BoxCollider>();
+        _thisAnim = _armObject.gameObject.GetComponent<Animator>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "event" && _oneTime)
         {
-            print("gg");
-            collision.gameObject.GetComponent<CupCopy_sc>().TakeHand();
-            collision.gameObject.transform.position = _cupToHandTrasform.position;
-            collision.gameObject.transform.parent = this.transform;
+            _thisCollider.enabled = false;
+            _oneTime = false;
+
+            _colliderObject = other.gameObject.GetComponent<CupEventCollider_sc>().GiveCupObject();
+
+            other.gameObject.GetComponent<CupEventCollider_sc>().TakeGrass();
+            _colliderObject.transform.position = _cupToHandTrasform.position;
+            _colliderObject.transform.parent = _armObject.transform;
+
+            if (_rightSide)
+            {
+                _thisAnim.SetTrigger("take");
+            }
+            else
+            {
+                _thisAnim.SetTrigger("take2");
+            }
         }
     }
 }

@@ -59,6 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _thisLidObject: {fileID: 1030945400853930054}
   _thisCartoonObject: {fileID: 1030945399772113610}
+  _thisCup: {fileID: 1030945400754539736}
   _cupCopyScript: {fileID: 7832326120998957117}
 --- !u!1 &1030945399772113610
 GameObject:
@@ -321,7 +322,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsSell: 0
-  _cupEventScript: {fileID: 0}
   _lerpValue: 2
   _multiplierValue: 5
   _speed: 10

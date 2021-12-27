@@ -6,9 +6,9 @@ public class CupEventCollider_sc : MonoBehaviour
 {
     [SerializeField] private GameObject _thisLidObject;
     [SerializeField] private GameObject _thisCartoonObject;
+    [SerializeField] private GameObject _thisCup;
 
     [SerializeField] private CupCopy_sc _cupCopyScript;
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,4 +25,13 @@ public class CupEventCollider_sc : MonoBehaviour
             _cupCopyScript.IsSell = true;
         }
     }
+    public void TakeGrass()
+    {
+        _cupCopyScript.TakeHand();
+    }
+    public GameObject GiveCupObject()
+    {
+        return _thisCup;
+    }
+
 }

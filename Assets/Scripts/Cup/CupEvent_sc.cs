@@ -7,6 +7,7 @@ public class CupEvent_sc : MonoBehaviour
     public List<GameObject> _copyCupsList;
 
     [SerializeField] private GameManager_sc _gameManagerScript;
+    [SerializeField] private float _moveTowardsSpeed;
 
     private BoxCollider _playerCollider;
 
@@ -64,5 +65,12 @@ public class CupEvent_sc : MonoBehaviour
     {
         _indexValueOther = _copyCupsList.IndexOf(ObjectValue);
         return _indexValueOther;
+    }
+    public void FinishLevel(int value , GameObject Obj)
+    {
+        _copyCupsList[value].GetComponent<CupCopy_sc>().Finished();
+        _copyCupsList[value].GetComponent<CupCopy_sc>().FinishedGame(_moveTowardsSpeed,Obj);
+
+        _copyCupsList.RemoveAt(value);
     }
 }

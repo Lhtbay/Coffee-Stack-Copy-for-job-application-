@@ -35,4 +35,11 @@ public class Movement_sc : MonoBehaviour
     {
         _gameIsStart = _managerScript.gameStart;
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Finish")
+        {
+            this.enabled = false;
+        }
+    }
 }
