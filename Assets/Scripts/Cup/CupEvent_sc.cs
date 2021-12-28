@@ -7,6 +7,7 @@ public class CupEvent_sc : MonoBehaviour
     public List<GameObject> _copyCupsList;
 
     [SerializeField] private GameManager_sc _gameManagerScript;
+    [SerializeField] private Sounds_Manager_sc _soundsScript;
     [SerializeField] private float _moveTowardsSpeed;
 
     private BoxCollider _playerCollider;
@@ -26,7 +27,9 @@ public class CupEvent_sc : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "cup")
-        {           
+        {
+            _soundsScript.TakeCupSounds();
+
             _copyCupsList.Add(other.gameObject);
            
             //other.gameObject.GetComponent<CupCopy_sc>()._beforeObject = _copyCupsList[_copyCupsList.IndexOf(other.gameObject)-1];
@@ -71,6 +74,6 @@ public class CupEvent_sc : MonoBehaviour
         _copyCupsList[value].GetComponent<CupCopy_sc>().Finished();
         _copyCupsList[value].GetComponent<CupCopy_sc>().FinishedGame(_moveTowardsSpeed,Obj);
 
-        _copyCupsList.RemoveAt(value);
+        //_copyCupsList.RemoveAt(value);
     }
 }
