@@ -28,7 +28,7 @@ public class MainCamera_sc : MonoBehaviour
     private Animator _thisAnim;
 
     private Vector3 _newPosition;
-
+    private Animator _scoreBoardAnim;
     #endregion
 
     private void Start()
@@ -80,6 +80,8 @@ public class MainCamera_sc : MonoBehaviour
         if (_skoreNameİnt > 0)
         {
             _soundsScript.AwardsSounds();
+            _scoreBoardAnim = other.gameObject.GetComponent<Animator>();
+            _scoreBoardAnim.SetTrigger("score");
         }
         if (other.gameObject.name == _skoreString)
         {

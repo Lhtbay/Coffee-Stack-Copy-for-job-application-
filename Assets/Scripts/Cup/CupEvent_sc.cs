@@ -38,7 +38,7 @@ public class CupEvent_sc : MonoBehaviour
             other.gameObject.transform.position = new Vector3(
                 _copyCupsList[_indexNumber].transform.position.x,
                 _copyCupsList[_indexNumber].transform.position.y,
-                _copyCupsList[_indexNumber].transform.position.z+1);
+                _copyCupsList[_indexNumber].transform.position.z+1.2f);
                 
 
             other.gameObject.GetComponent<CupCopy_sc>().enabled = true;
